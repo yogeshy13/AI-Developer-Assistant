@@ -17,7 +17,7 @@ if theme == "Dark":
 
 st.markdown("""
 
-# 🤖 AI Dev Assistant
+# 🤖 BUG 0
 
 ### 🚀 AI-first Engineering Copilot
 

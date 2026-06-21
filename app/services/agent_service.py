@@ -8,37 +8,40 @@ class AgentService:
 
 
 def decide_action(self, query: str):
-    prompt = f"""
-    You are an AI engineering assistant.
+        prompt = f"""
+        You are an AI engineering assistant.
 
-    Classify the user request into one of:
-    - fix
-    - tests
-    - architecture
-    - general
+        Classify the user request into one of:
+        - fix
+        - tests
+        - architecture
+        - general
 
-    Query: {query}
+        Query: {query}
+        """
 
-    Return only the category.
-    """
-    return self.llm.generate(prompt).strip().lower()
+        return self.llm.generate(prompt).strip().lower()
+
 
 def run(self, query: str):
-    action = self.decide_action(query)
-    print(f"Agent decided action: {action}")
-    context = self.rag.retrieve_context(query)
+        # Step 1: Decide action
+        action = self.decide_action(query)
 
-    if action == "fix":
-        return self.fix_flow(query, context)
+        # Step 2: Retrieve context
+        context = self.rag.retrieve_context(query)
 
-    elif action == "tests":
-        return self.test_flow(query, context)
+        # Step 3: Route based on action
+        if "fix" in action:
+            prompt = f"Fix this code:\n{context}"
+        elif "test" in action:
+            prompt = f"Write tests for:\n{context}"
+        elif "architecture" in action:
+            prompt = f"Explain architecture:\n{context}"
+        else:
+            prompt = f"Answer:\n{context}\n\nQuestion: {query}"
 
-    elif action == "architecture":
-        return self.architecture_flow(query, context)
-
-    else:
-        return self.general_flow(query, context)
+        # Step 4: Generate response
+        return self.llm.generate(prompt)
 
 def fix_flow(self, query, context):
     prompt = f"""
