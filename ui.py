@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import time
 
-st.set_page_config(page_title="AI Dev Assistant", layout="wide")
+st.set_page_config(page_title="Bug0", layout="wide")
 
 # ---------- THEME ----------
 
