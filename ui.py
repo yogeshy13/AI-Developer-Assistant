@@ -5,13 +5,14 @@ import time
 st.set_page_config(page_title="Bug0", layout="wide")
 
 # ---------- THEME ----------
-
-theme = st.sidebar.radio("🌗 Theme", ["Dark", "Light"])
+## To be implemented in the future, currently using Streamlit's default theme
+''' theme = st.sidebar.radio("🌗 Theme", ["Dark", "Light"])
 
 if theme == "Dark":
     st.markdown(""" <style>
     body { background-color: #0e1117; color: white; } </style>
     """, unsafe_allow_html=True)
+'''
 
 # ---------- HEADER ----------
 
