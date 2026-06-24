@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 router = APIRouter()
-from app.services import llm_service, llm_service, rag_service
+from app.services import llm_service, rag_service
 llm_service = llm_service.LLMService()
 rag_service = rag_service.RAGService()  
 from app.models import QueryRequest
